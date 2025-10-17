@@ -165,6 +165,20 @@ For more information, you can refer to [Official Documentation ](https://support
 >
 > You can refer to [Harley Hahn's Guide to Unix and Linux](https://www.harley.com/unix-book/book/chapters/04.html#H)  and  [Conda User Guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) to learn more.
 
+## 1.3 Meta quest setup 
+Make sure that the VR has internet access. If it does not have, usb tethering needs to be done by connecting VR to pc with internet access. 
+1. Install adb services specified [here](https://github.com/unitreerobotics/xr_teleoperate/wiki/XR_Device)
+2. Install gnirehtet
+```bash
+   wget https://github.com/Genymobile/gnirehtet/releases/download/v2.5.1/gnirehtet-rust-linux64-v2.5.1.zip
+   unzip gnirehtet-rust-linux64-v2.5.1.zip -d gnirehtet
+   cd gnirehtet
+   ```
+3. Run gnirehtet
+```bash
+ADB=(path_to_adb)/platform-tools/adb ./gnirehtet run
+```
+
 # 2. 💻 Simulation Deployment
 
 ## 2.1 📥 Environment Setup
