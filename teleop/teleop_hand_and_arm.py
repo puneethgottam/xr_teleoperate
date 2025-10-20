@@ -91,7 +91,7 @@ if __name__ == '__main__':
     parser.add_argument('--task-dir', type = str, default = './utils/data/', help = 'path to save data')
     parser.add_argument('--task-name', type = str, default = 'pick cube', help = 'task name for recording')
     parser.add_argument('--task-desc', type = str, default = 'e.g. pick the red cube on the table.', help = 'task goal for recording')
-
+    parser.add_argument('--network', type = str, default = None, help = 'network interface for robot communication, e.g. eth0')
     args = parser.parse_args()
     logger_mp.info(f"args: {args}")
 
@@ -119,12 +119,12 @@ if __name__ == '__main__':
         else:
             img_config = {
                 'fps': 30,
-                'head_camera_type': 'opencv',
-                'head_camera_image_shape': [480, 1280],  # Head camera resolution
-                'head_camera_id_numbers': [0],
-                'wrist_camera_type': 'opencv',
-                'wrist_camera_image_shape': [480, 640],  # Wrist camera resolution
-                'wrist_camera_id_numbers': [2, 4],
+                'head_camera_type': 'realsense',
+                'head_camera_image_shape': [480, 640],  # Head camera resolution
+                'head_camera_id_numbers': ['337122070921'],
+                # 'wrist_camera_type': 'opencv',
+                # 'wrist_camera_image_shape': [480, 640],  # Wrist camera resolution
+                # 'wrist_camera_id_numbers': [2, 4],
             }
 
 
@@ -172,7 +172,7 @@ if __name__ == '__main__':
         # arm
         if args.arm == "G1_29":
             arm_ik = G1_29_ArmIK()
-            arm_ctrl = G1_29_ArmController(motion_mode=args.motion, simulation_mode=args.sim)
+            arm_ctrl = G1_29_ArmController(motion_mode=args.motion, simulation_mode=args.sim, network_interface=args.network)
         elif args.arm == "G1_23":
             arm_ik = G1_23_ArmIK()
             arm_ctrl = G1_23_ArmController(motion_mode=args.motion, simulation_mode=args.sim)
