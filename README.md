@@ -324,6 +324,14 @@ After image service is started, you can use `image_client.py` **in the Host** te
 (tv) unitree@Host:~/xr_teleoperate/teleop/image_server$ python image_client.py
 ```
 
+If the image server runs successfully on both G1 and PC, then run the following command to start the teleopration.
+
+```bash
+(tv) unitree@Host:~/xr_teleoperate/teleop: python teleop_hand_and_arm.py --xr-mode=hand --arm=G1_29 --ee=dex3 --record --network (your network)
+```
+
+Note: If the network is not provided, cyclonedds will not communicate with the robot if the host is connected to multiple LAN cables.
+
 ## 3.2 ✋ Inspire Hand Service (optional)
 
 > **Note 1**: Skip this if your config does not use the Inspire hand.
